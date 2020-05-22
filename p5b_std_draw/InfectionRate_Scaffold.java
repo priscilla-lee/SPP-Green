@@ -1,0 +1,113 @@
+/* *****************************************************************************
+ * Name:
+ * NetID:
+ * Precept:
+ *
+ * Description: Simulates and animates the spread of infection in a population
+ *              of size n for a disease with a given infection rate.
+ *
+ * Examples:
+ * > java-introcs InfectionRate 200 1
+ * 
+ * > java-introcs InfectionRate 400 0.15 
+ * 
+ **************************************************************************** */
+
+import java.awt.Color;
+
+public class InfectionRate {
+    public static void main(String[] args) {
+        // get n and infectionRate from command-line
+        int n = Integer.parseInt(args[0]);
+        double infectionRate = __________________________;
+
+        // initial values for n people
+        double[] rx = new double[n];
+        double[] ry = new double[n];
+        double[] vx = new double[n];
+        double[] vy = new double[n];
+        boolean[] infected = ___________________;
+        double radius = 0.02;
+
+        for (int i = 0; i < n; i++) {
+            rx[i] = 1.8 * Math.random() - 0.9; // random values in [-0.9, 0.9)
+            ry[i] = 1.8 * Math.random() - 0.9;
+            vx[i] = 0.01 * Math.random() - 0.005;  // random values in [-0.005, 0.005)
+            vy[i] = 0.01 * Math.random() - 0.005;
+        }
+
+        // infect patient zero
+        infected[0] = ________;
+
+        // initialize standard drawing
+        StdDraw.setXscale(-1.0, 1.0);
+        StdDraw.setYscale(-1.0, 1.0);
+        StdDraw.enableDoubleBuffering();
+
+        // keep track of the number of animation iterations so far
+        int iteration = 1;
+
+        // main animation loop
+        while (true) {
+            // 1. bounce all balls off wall according to law of elastic collision
+            for (int i = 0; i < n; i++) {
+                if (Math.abs(rx[i] + vx[i]) + radius > 1.0) {
+                    vx[i] = -vx[i];
+                }
+                if (Math.abs(ry[i] + vy[i]) + radius > 1.0) {
+                    vy[i] = -vy[i];
+                }
+            }
+
+            // 2. update positions of all balls - velocity is constant
+            for (int i = 0; i < n; i++) {
+                rx[i] = rx[i] + vx[i];
+                ry[i] = ry[i] + vy[i];
+            }
+
+            // 2b. infect people based on proximity and infection rate
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    // person i is at risk if they are near a person j who is infected
+                    boolean xClose = (Math.abs(rx[i] - rx[j]) < radius);
+                    boolean yClose = __________________________________;
+                    boolean atRisk = infected[___] && _______ && _______;
+
+                    // potentially infect person i if at they are at risk
+                    if (atRisk && Math.random() < infectionRate) {
+                        infected[___] = _______;
+                    }
+                }
+            }
+
+            // 3a. set the background to light gray
+            StdDraw.clear(StdDraw.LIGHT_GRAY);
+
+            // 3b. draw all people on the screen
+            for (int i = 0; i < n; i++) {
+                // color healthy people gray and infected people red
+                Color color = new Color (10, 10, 10, 100); // gray
+                if (_____________) {
+                    color = new Color(255, 0, 0, 100); // red
+                }
+
+                StdDraw.setPenColor(color);
+                StdDraw.filledCircle(______, _______, radius);
+            }
+
+            // display and pause for 20 ms
+            StdDraw.show();  // double buffer is enabled
+            StdDraw.pause(20);
+
+            // report the proportion of infected people every 20 iterations
+            iteration++;
+            if (iteration % 10 == 0) {
+                int numInfected = 0;
+                for (int i = 0; i < n; i++) {
+                    if (infected[i]) numInfected++;
+                }
+                StdOut.println(1.0 * numInfected / n);
+            }
+        }
+    }
+}

@@ -8,6 +8,15 @@
  * the first date that appears in the input.
  *
  * Examples:
+ * -- input required from standard input
+ * -- use Ctrl-d (Mac) or Ctrl-z <enter> (Windows) for EOF
+ *
+ * > java-introcs PeakDate
+ * Oct 1 205
+ * Oct 2 900
+ * Oct 3 75
+ * Crtl-d / Crtl-z <enter>
+ * Monarch sightings (count: 900) peaked on Oct 2.
  *
  * > java-introcs Monarchs OklahomaCityOK 1998 < monarchs_data.txt | java-introcs PeakDate
  * Monarch sightings (count: 616) peaked on Oct 7.

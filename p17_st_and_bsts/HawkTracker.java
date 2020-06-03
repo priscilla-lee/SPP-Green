@@ -28,19 +28,19 @@
  * were sighted in Connecticut in 1970 during the 7th time frame (Oct 1 - 5).
  *
  * Your output should look like this:
- * CT 4
- * MA 4
- * MD 4
- * ME 3
- * NC 6
- * NH 3
- * NJ 4
- * NY 4
- * PA 4
- * SC 6
- * VA 6
- * VT 2
- * WV 5
+ * CT 3
+ * MA 3
+ * MD 3
+ * ME 2
+ * NC 5
+ * NH 2
+ * NJ 3
+ * NY 3
+ * PA 3
+ * SC 5
+ * VA 5
+ * VT 1
+ * WV 4
  *
  **************************************************************************** */
 

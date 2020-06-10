@@ -7,26 +7,26 @@
  *              of size n for a disease with a given infection rate.
  *
  * Examples:
- * > java-introcs InfectionRate 200 1
+ * > java-introcs InfectionSimulation 200 1
  * 
- * > java-introcs InfectionRate 400 0.15 
+ * > java-introcs InfectionSimulation 400 0.15 
  * 
  **************************************************************************** */
 
 import java.awt.Color;
 
-public class InfectionRate {
+public class InfectionSimulation {
     public static void main(String[] args) {
         // get n and infectionRate from command-line
         int n = Integer.parseInt(args[0]);
-        double infectionRate = __________________________;
+        double infectionRate = Double.parseDouble(args[1]);
 
         // initial values for n people
         double[] rx = new double[n];
         double[] ry = new double[n];
         double[] vx = new double[n];
         double[] vy = new double[n];
-        boolean[] infected = ___________________;
+        boolean[] infected = new boolean[n];
         double radius = 0.02;
 
         for (int i = 0; i < n; i++) {
@@ -35,9 +35,9 @@ public class InfectionRate {
             vx[i] = 0.01 * Math.random() - 0.005;  // random values in [-0.005, 0.005)
             vy[i] = 0.01 * Math.random() - 0.005;
         }
-
+        
         // infect patient zero
-        infected[0] = ________;
+        infected[0] = true;
 
         // initialize standard drawing
         StdDraw.setXscale(-1.0, 1.0);
@@ -70,12 +70,12 @@ public class InfectionRate {
                 for (int j = 0; j < n; j++) {
                     // person i is at risk if they are near a person j who is infected
                     boolean xClose = (Math.abs(rx[i] - rx[j]) < radius);
-                    boolean yClose = __________________________________;
-                    boolean atRisk = infected[___] && _______ && _______;
+                    boolean yClose = (Math.abs(ry[i] - ry[j]) < radius);
+                    boolean atRisk = infected[j] && xClose && yClose;
 
-                    // potentially infect person i if at they are at risk
+                    // potentially infect person i if they are at risk
                     if (atRisk && Math.random() < infectionRate) {
-                        infected[___] = _______;
+                        infected[i] = true;
                     }
                 }
             }
@@ -87,12 +87,12 @@ public class InfectionRate {
             for (int i = 0; i < n; i++) {
                 // color healthy people gray and infected people red
                 Color color = new Color (10, 10, 10, 100); // gray
-                if (_____________) {
+                if (infected[i]) {
                     color = new Color(255, 0, 0, 100); // red
                 }
 
                 StdDraw.setPenColor(color);
-                StdDraw.filledCircle(______, _______, radius);
+                StdDraw.filledCircle(rx[i], ry[i], radius);
             }
 
             // display and pause for 20 ms

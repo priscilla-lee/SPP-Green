@@ -57,7 +57,7 @@ public class Interactions {
         for (int i = 0; i < numDays; i++) {
             Queue<String> day = _________________;
 
-            // compile a full list of names
+            // add all of the names in this day to the full list of names
             for (String name : day) {
                 all.enqueue(name);
             }

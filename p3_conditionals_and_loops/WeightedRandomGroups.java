@@ -6,22 +6,22 @@
  *
  * Example:
  * > java WeightedRandomGroups 10
- * Patient 0 to Group 3
- * Patient 1 to Group 3
- * Patient 2 to Group 3
- * Patient 3 to Group 3
- * Patient 4 to Group 3
- * Patient 5 to Group 3
- * Patient 6 to Group 2
- * Patient 7 to Group 3
- * Patient 8 to Group 1
- * Patient 9 to Group 3
+ * Participant 0 to Group 3
+ * Participant 1 to Group 3
+ * Participant 2 to Group 3
+ * Participant 3 to Group 3
+ * Participant 4 to Group 3
+ * Participant 5 to Group 3
+ * Participant 6 to Group 2
+ * Participant 7 to Group 3
+ * Participant 8 to Group 1
+ * Participant 9 to Group 3
  **************************************************************************** */
 public class WeightedRandomGroups {
     public static void main(String[] args) {
-        int numPatients = Integer.parseInt(args[0]);
+        int numParticipants = Integer.parseInt(args[0]);
 
-        for (int i = 0; i < numPatients; i++) {
+        for (int i = 0; i < numParticipants; i++) {
             // assign a random group with desired probabilities
             double r = Math.random();
             int group;
@@ -30,7 +30,7 @@ public class WeightedRandomGroups {
             else group = 3;
 
             // print the group assignment
-            System.out.println("Patient " + i + " to Group " + group);
+            System.out.println("Participant " + i + " to Group " + group);
         }
     }
 }

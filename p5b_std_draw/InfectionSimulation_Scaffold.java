@@ -69,17 +69,17 @@ public class InfectionSimulation {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     // person i is at risk if they are near a person j who is infected
-                    boolean xClose = (Math.abs(rx[i] - rx[j]) < radius);
-                    boolean yClose = __________________________________;
-                    boolean atRisk = infected[___] && _______ && _______;
+                    double dx = rx[i] - rx[j];
+                    double dy = _____________;
+                    boolean close = (Math.sqrt(dx * dx + dy * dy) < 2 * radius);
+                    boolean atRisk = infected[___] && ______;
 
-                    // potentially infect person i if at they are at risk
+                    // potentially infect person i if they are at risk
                     if (atRisk && Math.random() < infectionRate) {
-                        infected[___] = _______;
+                        infected[__] = _____;
                     }
                 }
             }
-
             // 3a. set the background to light gray
             StdDraw.clear(StdDraw.LIGHT_GRAY);
 

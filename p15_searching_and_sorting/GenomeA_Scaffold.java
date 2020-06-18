@@ -26,7 +26,7 @@ public class Genome {
 
         // We need a defensive copy so client can't alter our copy of sequence[]
         // This isn't it!
-        char[] sequence = input;
+        sequence = input;
     }
 
     // return the length of the genome

@@ -155,29 +155,29 @@ public class Genome {
         // is it really immutable?
         char[] values = { 'A', 'T', 'C', 'G' };
         Genome g = new Genome(values);
-        StdOut.println("g = " + g); // should be "ATCG"
+        System.out.println("g = " + g); // should be "ATCG"
         values[0] = 'G';
-        StdOut.println("g = " + g); // should still be "ATCG"!!
-        StdOut.println("Length of g = " + g.length());
+        System.out.println("g = " + g); // should still be "ATCG"!!
+        System.out.println("Length of g = " + g.length());
 
         // testing nucleotideAt() and isPotentialGene()
-        StdOut.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
-        StdOut.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
+        System.out.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
+        System.out.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
 
         // testing the String constructor, isIdentical(), getDuplicate(), and concat()
         Genome g1 = new Genome("GAATGT");
         Genome g2 = new Genome("CATAGC");
-        StdOut.println("\ng1 = " + g1);
-        StdOut.println("g2 = " + g2);
-        StdOut.println("Are g1 and g2 identical = " + g1.isIdentical(g2));
+        System.out.println("\ng1 = " + g1);
+        System.out.println("g2 = " + g2);
+        System.out.println("Are g1 and g2 identical = " + g1.isIdentical(g2));
 
         Genome g3 = g1.getDuplicate();
-        StdOut.println("\ng3 = " + g3 + " <-- g1.getDuplicate() ");
-        StdOut.println("Is g3[2, 8) a potential gene = " + g3.isPotentialGene(2, 8));
+        System.out.println("\ng3 = " + g3 + " <-- g1.getDuplicate() ");
+        System.out.println("Is g3[2, 8) a potential gene = " + g3.isPotentialGene(2, 8));
 
         Genome g4 = g1.concat(g2);
-        StdOut.println("\ng4 = " + g4 + " <-- g1.concat(g2) ");
-        StdOut.println("Is g4[2, 8) a potential gene = " + g4.isPotentialGene(2, 8));
-        StdOut.println("Is g4[2, 11) a potential gene = " + g4.isPotentialGene(2, 11));
+        System.out.println("\ng4 = " + g4 + " <-- g1.concat(g2) ");
+        System.out.println("Is g4[2, 8) a potential gene = " + g4.isPotentialGene(2, 8));
+        System.out.println("Is g4[2, 11) a potential gene = " + g4.isPotentialGene(2, 11));
     }
 }

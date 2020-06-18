@@ -97,13 +97,13 @@ public class Genome {
         // is it really immutable?
         char[] values = { 'A', 'T', 'C', 'G' };
         Genome g = new Genome(values);
-        StdOut.println("g = " + g); // should be "ATCG"
+        System.out.println("g = " + g); // should be "ATCG"
         values[0] = 'G';
-        StdOut.println("g = " + g); // should still be "ATCG"!!
-        StdOut.println("Length of g = " + g.length());
+        System.out.println("g = " + g); // should still be "ATCG"!!
+        System.out.println("Length of g = " + g.length());
 
         // testing nucleotideAt() and isPotentialGene()
-        StdOut.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
-        StdOut.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
+        System.out.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
+        System.out.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
     }
 }

@@ -53,9 +53,9 @@ public class Genome {
         // is it really immutable?
         char[] values = { 'A', 'T', 'C', 'G' };
         Genome g = new Genome(values);
-        StdOut.println("g = " + g); // should be "ATCG"
+        System.out.println("g = " + g); // should be "ATCG"
         values[0] = 'G';
-        StdOut.println("g = " + g); // should still be "ATCG"!!
-        StdOut.println("Length of g = " + g.length());
+        System.out.println("g = " + g); // should still be "ATCG"!!
+        System.out.println("Length of g = " + g.length());
     }
 }

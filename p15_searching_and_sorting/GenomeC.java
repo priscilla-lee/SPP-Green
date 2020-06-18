@@ -14,6 +14,7 @@
  * g = ATCG
  * Length of g = 4
  * Nucleotide of g at 1 = T
+ * Is g[1, 4) a potential gene = false
  *
  * g1 = GAATGT
  * g2 = CATAGC
@@ -158,9 +159,12 @@ public class Genome {
         values[0] = 'G';
         StdOut.println("g = " + g); // should still be "ATCG"!!
         StdOut.println("Length of g = " + g.length());
-        StdOut.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
 
-        // more tests
+        // testing nucleotideAt() and isPotentialGene()
+        StdOut.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
+        StdOut.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
+
+        // testing the String constructor, isIdentical(), getDuplicate(), and concat()
         Genome g1 = new Genome("GAATGT");
         Genome g2 = new Genome("CATAGC");
         StdOut.println("\ng1 = " + g1);

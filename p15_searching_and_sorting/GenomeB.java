@@ -14,17 +14,7 @@
  * g = ATCG
  * Length of g = 4
  * Nucleotide of g at 1 = T
- *
- * g1 = GAATGT
- * g2 = CATAGC
- * Are g1 and g2 identical = false
- *
- * g3 = GAATGTGAATGT <-- g1.getDuplicate()
- * Is g3[2, 8) a potential gene = true
- *
- * g4 = GAATGTCATAGC <-- g1.concat(g2)
- * Is g4[2, 8) a potential gene = false
- * Is g4[2, 11) a potential gene = true
+ * Is g[1, 4) a potential gene = false
  *
  **************************************************************************** */
 
@@ -43,16 +33,6 @@ public class Genome {
         for (int i = 0; i < n; i++) {
             // copy elements
             sequence[i] = input[i];
-        }
-    }
-
-    // create a genome from the given String
-    public Genome(String sequence) {
-        this.n = sequence.length();
-
-        this.sequence = new char[n]; // sequence = new char[n] is equivalent
-        for (int i = 0; i < this.n; i++) {
-            this.sequence[i] = sequence.charAt(i);
         }
     }
 
@@ -103,43 +83,6 @@ public class Genome {
         return isATG && (isTGA || isTAA || isTAG);
     }
 
-    // returns true if this genome is identical to the given genome
-    public boolean isIdentical(Genome that) {
-        if (this.n != that.n) return false;
-
-        for (int i = 0; i < n; i++) {
-            if (this.sequence[i] != that.sequence[i]) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // concats this genome with another genome and returns a new genome
-    public Genome concat(Genome that) {
-        // create a new array of the combined lengths
-        char[] combined = new char[_____________________];
-
-        // copy over all the nucleotide bases of ~this~ genome
-        for (int i = 0; i < _______.n; i++) {
-            combined[i] = _______.sequence[i];
-        }
-
-        // copy over all the nucleotide bases of ~that~ genome
-        for (int i = 0; i < _______.n; i++) {
-            combined[______.n + i] = _______.sequence[i];
-        }
-
-        // create a new genome with the concatenated sequence
-        return new Genome(combined);
-    }
-
-    // return a new genome with two concatenated copies of this genome
-    public Genome getDuplicate() {
-        return this.concat(this);
-    }
-
     // returns a string representation of this genome
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -158,22 +101,9 @@ public class Genome {
         values[0] = 'G';
         StdOut.println("g = " + g); // should still be "ATCG"!!
         StdOut.println("Length of g = " + g.length());
+
+        // testing nucleotideAt() and isPotentialGene()
         StdOut.println("Nucleotide of g at 1 = " + g.nucleotideAt(1));
-
-        // more tests
-        Genome g1 = new Genome("GAATGT");
-        Genome g2 = new Genome("CATAGC");
-        StdOut.println("\ng1 = " + g1);
-        StdOut.println("g2 = " + g2);
-        StdOut.println("Are g1 and g2 identical = " + g1.isIdentical(g2));
-
-        Genome g3 = g1.getDuplicate();
-        StdOut.println("\ng3 = " + g3 + " <-- g1.getDuplicate() ");
-        StdOut.println("Is g3[2, 8) a potential gene = " + g3.isPotentialGene(2, 8));
-
-        Genome g4 = g1.concat(g2);
-        StdOut.println("\ng4 = " + g4 + " <-- g1.concat(g2) ");
-        StdOut.println("Is g4[2, 8) a potential gene = " + g4.isPotentialGene(2, 8));
-        StdOut.println("Is g4[2, 11) a potential gene = " + g4.isPotentialGene(2, 11));
+        StdOut.println("Is g[1, 4) a potential gene = " + g.isPotentialGene(1, 4));
     }
 }

@@ -6,11 +6,11 @@
  *
  * Example:
  * > java-introcs QualifiedParticipants 5 0.1
- * Person 11 qualified to participate in the study
- * Person 21 qualified to participate in the study
- * Person 26 qualified to participate in the study
- * Person 27 qualified to participate in the study
- * Person 35 qualified to participate in the study
+ * Person 11 qualified to participate.
+ * Person 21 qualified to participate.
+ * Person 26 qualified to participate.
+ * Person 27 qualified to participate.
+ * Person 35 qualified to participate.
  *
  **************************************************************************** */
 

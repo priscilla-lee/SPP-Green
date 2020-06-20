@@ -60,7 +60,8 @@ public class Genome {
     // returns the nucleotide at the given position
     public char nucleotideAt(int i) {
         if (i < 0 || i >= n) {
-            throw new RuntimeException("The requested nucleotide index is out of bounds");
+            throw new RuntimeException("The requested nucleotide index " + i 
+                  + " is out of bounds for a genome sequence of length " + n);
         }
         return sequence[i];
     }

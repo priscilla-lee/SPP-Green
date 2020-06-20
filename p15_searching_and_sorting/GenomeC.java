@@ -107,7 +107,7 @@ public class Genome {
     public boolean isIdentical(Genome that) {
         if (this.n != that.n) return false;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < this.n; i++) {
             if (this.sequence[i] != that.sequence[i]) {
                 return false;
             }

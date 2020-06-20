@@ -64,12 +64,10 @@ public class Genome {
 
     // returns the nucleotide at the given position
     public char nucleotideAt(int i) {
-        if (i >= 0 && i < n) {
-            return sequence[i];
+        if (i < 0 || i >= n) {
+            throw new RuntimeException("The requested nucleotide index is out of bounds");
         }
-        else {
-            throw new RuntimeException("The requested index is out of bounds");
-        }
+        return sequence[i];
     }
 
     // returns true if the genome sequence in the given range starts with a
